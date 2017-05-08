@@ -1,0 +1,53 @@
+WAR installation(installing as package)
+We need Apache Tomcat 6+ and JDK 7+
+
+Step01: Check for java(java 1.7 or latest)
+java -version
+
+[ansadm@localhost ~]$ java -version
+openjdk version "1.8.0_131"
+OpenJDK Runtime Environment (build 1.8.0_131-b11)
+OpenJDK 64-Bit Server VM (build 25.131-b11, mixed mode)
+
+Step02: Apache Tomcat installation and configuration
+Download tomcat 8: 
+cd /tmp
+wget http://mirror.fibergrid.in/apache/tomcat/tomcat-8/v8.5.14/bin/apache-tomcat-8.5.14.tar.gz
+ls -l
+tar -zxvf apache-tomcat-8.5.14.tar.gz
+ls -l
+mv apache-tomcat-8.5.14 /home/ansadm/apache8
+cd
+
+#Now, we need to add this to a shell variable
+vim ~/.bashrc
+export CATALINA_HOME=/home/ansadm/apache8
+source ~/.bashrc
+echo $CATALINA_HOME
+
+Step03: Setup Jave home to shell variable
+vim ~/.bashrc
+export JAVA_HOME=/usr/lib/jvm/java-openjdk
+source ~/.bashrc
+echo $JAVA_HOME
+
+Step04: Download WAR file of jenkins
+wget https://updates.jenkins-ci.org/latest/jenkins.war
+ls -l
+
+cp jenkins.war $CATALINA_HOME/webapps/
+./apache8/bin/catalina.sh start
+
+Step05: Navigate to 
+http://<ipaddress>:<portno>
+
+
+Note: If you are facing issue to accecc jenkins
+vim apache8/conf/server.xml
+change the port to 8081
+then start the service as root
+su -
+cd /home/ansadm/apache8/bin/
+./catalina.sh stop
+./catalina.sh start
+iptables -F
