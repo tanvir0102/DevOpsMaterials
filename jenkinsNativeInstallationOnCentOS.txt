@@ -1,0 +1,42 @@
+##Jenkins Setup on Centos
+
+Native installation:
+Step01: Check Java Version
+java -version
+
+[ansadm@localhost ~]$ java -version
+openjdk version "1.8.0_131"
+OpenJDK Runtime Environment (build 1.8.0_131-b11)
+OpenJDK 64-Bit Server VM (build 25.131-b11, mixed mode)
+
+Step02: add jenkin to centos repo
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+Step03: install jenkins
+sudo yum install jenkins
+
+Step04: start/stop jenkins
+
+# /etc/init.d/jenkins start | stop | restart
+# chkconfig jenkins on
+
+Step05: Varify Jenkins
+# netstat -ntulp | grep 8080
+
+Step06: Change Jenkins HTTP port number
+By default, Jenkins runs on port 8080. If you want to change the default port 
+for Jenkins you need to change the file /etc/sysconfig/jenkins
+
+# vim /etc/sysconfig/jenkins
+
+Default:
+JENKINS_PORT="8080"
+New:
+JENKINS_PORT="8443"
+
+Step07: Access Jenkins
+Go to your browser and type http://<ipaddress>:<portno>/
+Presently you ought to ready to see the Jenkins dashboard like below image:
+
