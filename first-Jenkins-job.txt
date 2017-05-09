@@ -1,0 +1,22 @@
+##First Jenkins Job
+
+Step01:
+>>HelloWorld Job
+--click on new Item
+--Enter the name(HelloWorld)
+--Select Free Style project
+--click ok
+
+Step02:
+--leave all empty(default) for now
+--In build section, choose "Execute Shell" from Add Build Steps and
+--Click Apply
+
+Step03:
+--In command area, type echo "Hello World !!!"
+--click Save. Jenkins will open the HelloWorld project.
+--The build history will be blank - as this has not run at all.
+--To run the project, Click Build now.
+
+Step04:
+--The console output shows that a temporary batch file was created and executed on your behalf.
