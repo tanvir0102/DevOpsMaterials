@@ -1,0 +1,15 @@
+##Install apache Ant and  Maven build tool
+
+wget http://redrockdigimark.com/apachemirror//ant/binaries/apache-ant-1.9.9-bin.tar.gz
+tar -zxvf apache-ant-1.9.9-bin.tar.gz
+wget http://redrockdigimark.com/apachemirror/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz
+tar -zxvf apache-maven-3.5.0-bin.tar.gz
+vim ~/.bashrc
+export ANT_HOME=/home/ansadm/apache-ant-1.9.9
+export M2_HOME=/home/ansadm/apache-maven-3.5.0
+source ~/.bashrc
+echo $ANT_HOME
+vim ~/.bashrc
+export PATH=$PATH:$M2_HOME/bin:$ANT_HOME/bin
+source ~/.bashrc
+
